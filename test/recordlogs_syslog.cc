@@ -155,7 +155,7 @@ static const char *NOT_EXISTED_PATH = "/tmp/not-existed/201802-31415925";
     "padding, padding, padding, padding, padding, padding, padding, padding, " \
     "padding, padding, padding, padding, padding, padding, padding, padding"
 
-TEST(RecordErrorTest, NoArgsNormal) {
+TEST(SyslogRecordErrorTest, NoArgsNormal) {
     static const char *message_text = MESSAGE_TEXT_BASE;
     static const char *format_text = LOGMSG_ERROR_LEADING MESSAGE_TEXT_BASE;
     MockSyslogWrapper mockSyslogWrapper;
@@ -169,7 +169,7 @@ TEST(RecordErrorTest, NoArgsNormal) {
     }
 }
 
-TEST(RecordErrorTest, NoArgsLong) {
+TEST(SyslogRecordErrorTest, NoArgsLong) {
     static const char *message_text = MESSAGE_TEXT_LONGBASE;
     static const char *format_text_1 = LOGMSG_ERROR_LARGE;
     static const char *format_text_2 = MESSAGE_TEXT_LONGBASE;
@@ -186,7 +186,7 @@ TEST(RecordErrorTest, NoArgsLong) {
     }
 }
 
-TEST(RecordInfoTest, NoArgsNormal) {
+TEST(SyslogRecordInfoTest, NoArgsNormal) {
     static const char *message_text = MESSAGE_TEXT_BASE;
     static const char *format_text = LOGMSG_INFO_LEADING MESSAGE_TEXT_BASE;
     MockSyslogWrapper mockSyslogWrapper;
@@ -200,7 +200,7 @@ TEST(RecordInfoTest, NoArgsNormal) {
     }
 }
 
-TEST(RecordInfoTest, NoArgsLong) {
+TEST(SyslogRecordInfoTest, NoArgsLong) {
     static const char *message_text = MESSAGE_TEXT_LONGBASE;
     static const char *format_text_1 = LOGMSG_INFO_LARGE;
     static const char *format_text_2 = MESSAGE_TEXT_LONGBASE;
