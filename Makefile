@@ -19,13 +19,21 @@ test/recordlogs_syslog_with_mock.o: src/recordlogs_syslog.c
 test/recordlogs_syslog: test/recordlogs_syslog_with_mock.o test/helper.cc test/recordlogs_syslog_wrapper.cc test/recordlogs_syslog.cc
 	$(CXX) $(TESTCXXFLAGS) -o $@ $^ $(TESTLDFLAGS) $(TESTLIBS)
 
-test: test/testhelper test/recordlogs_syslog
+test/recordlogs_stderrprintf_with_mock.o: src/recordlogs_stderrprintf.c
+	$(CC) $(CFLAGS) -DMOCKED_VFPRINTF=mocked_vfprintf -DMOCKED_FPUTC=mocked_fputc -c -o $@ $<
+
+test/recordlogs_stderrprintf: test/recordlogs_stderrprintf_with_mock.o test/helper.cc test/recordlogs_stderrprintf_wrapper.cc test/recordlogs_stderrprintf.cc
+	$(CXX) $(TESTCXXFLAGS) -o $@ $^ $(TESTLDFLAGS) $(TESTLIBS)
+
+test: test/testhelper test/recordlogs_syslog test/recordlogs_stderrprintf
 	test/testhelper
 	test/recordlogs_syslog
+	test/recordlogs_stderrprintf
 
 clean-test-binary:
 	$(RM) test/testhelper
 	$(RM) test/recordlogs_syslog test/recordlogs_syslog_with_mock.o
+	$(RM) test/recordlogs_stderrprintf test/recordlogs_stderrprintf_with_mock.o
 
 clean-test-coverage:
 	$(RM) *.gcov
