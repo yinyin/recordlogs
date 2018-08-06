@@ -65,4 +65,4 @@ build/**
 
 test/testhelper
 test/recordlogs_syslog
-
+test/recordlogs_stderrprintf
