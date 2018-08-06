@@ -62,3 +62,7 @@ tags
 
 .env
 build/**
+
+test/testhelper
+test/recordlogs_syslog
+
